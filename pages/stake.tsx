@@ -14,8 +14,8 @@ import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 
 const nftDropContractAddress = "0x597e400611dc566a16552fe7bb353500733cde5c";
-const tokenContractAddress = "0xb1cF059e6847e4270920a02e969CA2E016AeA22B";
-const stakingContractAddress = "0xB712975e13427ac804177E7CebF08781bbF9B89c";
+const tokenContractAddress = "0xC8442D2Ebccb0a93CC37e3f653583B8519EA7fcC";
+const stakingContractAddress = "0xb078d0FB565E8e8df695508C16A02E6EfF499fD6";
 
 const Stake: NextPage = () => {
   // Wallet Connection Hooks
@@ -30,6 +30,7 @@ const Stake: NextPage = () => {
 
   // Load Unstaked NFTs
   const { data: ownedNfts } = useOwnedNFTs(nftDropContract, address);
+  
 
   // Load Balance of Token
   const { data: tokenBalance } = useTokenBalance(tokenContract, address);
@@ -101,6 +102,8 @@ const Stake: NextPage = () => {
   async function claimRewards() {
     const claim = await contract?.call("claimRewards");
   }
+
+  
 
   if (isLoading) {
     return <div>Loading</div>;
